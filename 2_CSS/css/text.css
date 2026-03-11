@@ -1,0 +1,53 @@
+#ff1{font-family: "궁서체";}
+#ff2{font-family: "굴림체";}
+#ff3{font-family: "없는글꼴","메롱글꼴","아싸글꼴","바탕체","맑은고딕";}
+#web-font{font-family: "Permanent Marker", cursive;}
+
+#size{font-size: 30px;}
+
+#fw1{font-weight: bold;}
+#fw2{font-weight: lighter;}
+#fw3{font-weight: 900;}
+
+#fv{font-variant: small-caps;}
+
+#fs1{font-style: italic;}
+#fs2{font-style: oblique;}
+
+#f1{font: 30px/100px "궁서체";}
+#f2{font: italic bold 20px/20px "고딕체"}
+
+#c-name{color:red;}
+#c-16{color:#ff0000;}
+#c-rgb{color:rgb(255,0,0);}
+#c-rgba{color:rgba(255,0,0,0.4);}
+
+#td1{text-decoration: none;}
+#td2{text-decoration: underline;}
+#td3{text-decoration: line-through;}
+#td4{text-decoration: overline;}
+
+#tt1{text-transform: none;}
+#tt2{text-transform: capitalize;}
+#tt3{text-transform: uppercase;}
+#tt4{text-transform: lowercase;}
+
+#bg{margin:30px; padding: 50px; background: black;}
+.shadow{font-size: 100px; font-weight: 900;}
+#ts1{color: orangered; text-shadow: 0px 1px 20px #fff;}
+#ts2{color:turquoise;text-shadow: 5px 5px 10px #fff;}
+#ts3{color:indigo;text-shadow: -5px -5px 5px #fff;}
+#ts4{text-shadow: 0px 0px 4px #ccc, 0px -5px 4px #ff3,2px -10px 6px #fd3,-2px -15px 11px #f80,
+2px -19px 18px #f20;}
+
+#space1{white-space: normal;}
+#space2{white-space: nowrap;}
+#space3{white-space: pre;}
+#space4{white-space: pre-line;}
+#space5{white-space: pre-wrap;}
+
+#spacing1{letter-spacing: 10px;}
+#spacing2{word-spacing: 10px;}
+
+
+
