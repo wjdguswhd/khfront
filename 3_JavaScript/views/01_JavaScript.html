@@ -89,17 +89,43 @@
     <h4>window.confirm()으로 입력</h4>
     <p>
         어떤 질문에 대해 "예/아니오"의 결과를 얻을 때 사용<br/>
-        확인 버튼과 취소 버튼이 나타나며 확인 버튼 클릭 시 _____, 취소 버튼 클릭시 ______리턴
+        확인 버튼과 취소 버튼이 나타나며 확인 버튼 클릭 시 true, 취소 버튼 클릭시 false리턴
     </p>
-    <button>window.cofirm()</button>
+    <button onclick="checkConfrim();">window.cofirm()</button>
+    <script>
+        function checkConfrim(){
+           var result =  window.confirm('확인과 취소를 누를 수 있습니다.');
+           console.log(result);
+           //확인을 누르면 "확인을 누르셨군요!" 알림창, 취소를 누르면 "취소를 누르셨군요!" 알림창
+           if(result){
+            alert('확인을 누르셨군요!')
+           }else{
+            alert('취소를 누르셨군요!')
+           }
+        }
+    </script>
 
     <h4>window.prompt()로 입력</h4>
     <p>
         텍스트 필드와 확인, 취소 버튼이 있는 대화상자<br/>
         출력하고 입력한 메시지 내용을 리턴 값으로 돌려받음<br/>
-        메시지를 입력한 후 확인 버튼을 누르면 _____, 취소 버튼을 누르면 _____ 리턴
+        메시지를 입력한 후 확인 버튼을 누르면 입력한 메시지, 취소 버튼을 누르면 null 리턴
     </p>
-    <button>window.prompt()</button>
+    <button onclick="checkPrompt();">window.prompt()</button>
+    <script>
+        function checkPrompt(){
+            var result = prompt('당신의 성별은 무엇입니까?','남자/여자');
+            console.log(result);
+            //입력받은 값이 남자이면 "당신은 XY입니다"알림창, 여자 이면 "당신은 XX입니다"알림창
+            if(result==null || result.trim()==''){
+                alert('성별을 입력해주세요.');
+            }else if(result.trim()=='남자'){
+                alert('당신은 XY입니다.');
+            }else if(result.trim()=='여자'){
+                alert('당신은 XX입니다.');
+            }
+        }
+    </script>
 
     <hr/>
 
@@ -149,15 +175,21 @@
             <table>
 
                 <tr>
-                    <td input type="checkbox" name="hobby" value="game" id="game"><label for="game">게임</label></td>
-                    <td input type="checkbox" name="hobby" value="music" id="music"><label for="music">음악감상</label></td>
-                    <td input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie">영화보기</label></td>
+                    <td><input type="checkbox" name="hobby" value="game" id="game">
+                    <label for="game">게임</label></td>
+                    <td><input type="checkbox" name="hobby" value="music" id="music">
+                    <label for="music">음악감상</label></td>
+                    <td><input type="checkbox" name="hobby" value="movie" id="movie">
+                    <label for="movie">영화보기</label></td>
                 </tr>
 
                 <tr>
-                    <td input type="checkbox" name="hobby" value="book" id="book"><label for="book">독서</label></td>
-                    <td input type="checkbox" name="hobby" value="travel" id="travel"><label for="travel">여행</label></td>
-                    <td input type="checkbox" name="hobby" value="exercise" id="exercise"><label for="exercise">운동</label></td>
+                    <td><input type="checkbox" name="hobby" value="book" id="book">
+                    <label for="book">독서</label></td>
+                    <td><input type="checkbox" name="hobby" value="travel" id="travel">
+                    <label for="travel">여행</label></td>
+                    <td><input type="checkbox" name="hobby" value="exercise" id="exercise">
+                    <label for="exercise">운동</label></td>
                 </tr>
 
             </table>
@@ -165,11 +197,72 @@
     </form>
     <br/>
     <div id="area2" class="area"></div><br/>
-    <button>name으로 접근</button>
+    <button onclick="accessName();">name으로 접근</button>
+    <script>
+        function accessName(){
+            var hobby = document.getElementsByName('hobby');
+            console.log(hobby);
+
+            var checkItem = '';
+            for(var i =0; i<hobby.length; i++){
+              console.log(hobby[i]);
+              console.log(hobby[i].checked);
+
+              
+              if(hobby[i].checked){
+                    checkItem += hobby[i].value + ' 선택함 <br/>';
+              }
+            }
+
+           // var area = document.getElementById('area2');
+           //area.innerHTML=checkItem;
+           document.getElementById('area2').innerHTML = checkItem;
+
+        }
+    </script>
 
     <h3>class로 접근</h3>
-    <button>class로 접근</button>
+    <button onclick="accessClass();">class로 접근</button>
+    <script>
+        function accessClass(){
+            var area = document.getElementsByClassName('area');
+            console.log(area);
+            //class가 area로 들어가있는 요소의 테두리 스타일을 짧은 선으로 변경
+          
+            for(var i = 0; i<area.length;i++){
+                area[i].style.borderStyle = 'dashed';
+            }
+        }
+    </script>
 
+    <h3>text박스의 value값 읽어오기
+    <form>
+        이름: <input type="text" name="userName" id="userName"/>
+        <input type="button" onclick="readValue();" value="input값 확인"/>
+    </form>
+    <br/>
+
+    <div id="area3" class="area"></div>
+    <script>
+        function readValue(){
+            //input값 확인 이라는 버튼을 클릭하면 textfield에 입력한 값이 div에 출력되는 코드 작성
+            //그리고 div에 입력된 값이 출력되면 textfield에 있던 값은 사라지게 만들기
+            //단, 입력된 값이 없으면 "이름을 입력하세요" 알림창
+            var input = document.getElementById("userName");
+            var area = document.getElementById("area3");
+
+            var value = input.value.trim();
+
+            if(value == ""){
+                alert("이름을 입력하세요");
+                input.focus();
+            }else{
+                area.innerHTML = value;
+                input.value= "";
+            }
+                    
+                }
+    </script>
     
 
 
