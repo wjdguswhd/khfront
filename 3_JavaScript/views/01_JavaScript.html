@@ -263,6 +263,91 @@
                     
                 }
     </script>
+
+       <br/><br/>
+
+        <h2>예제</h2>
+    <h3>버튼을 누르면 선택한 select값에 맞춰 글자 색 변경하기</h3>
+    <select id="colors">
+        <option value="red">빨강</option>
+        <option value="yellow">노랑</option>
+        <option value="green">초록</option>
+        <option value="blue">파랑</option>
+        <option value="black">검정</option>
+    </select>
+    <button onclick="changeSpanColor();">색깔 변경</button>
+    =>
+    <span id="resultSpan">우리집 강아지는 복슬 강아지</span>
+    <script>
+      //  function changeSpanColor(){
+      //      var select = document.getElementById('colors'); //select접근
+      //      var color = select.value;
+      //      document.getElementById('resultSpan').style.color = color;
+      //  }
+      const changeSpanColor=()=>{
+        const select = document.getElementById('colors'); //select접근
+        const color = select.value;
+        document.getElementById('resultSpan').style.color = color;
+      }
+    </script>
+
+    <br/><br/>
+
+    <h3>입력받은 값을 li에 삽입하기</h3>
+    <h4>이미 값이 들어가 있는 li면 "현재 값이 존재합니다. 덮어씌우시겠습니까?" 물어보고 덮어씌우겠다고 하면 덮어씌우기</h4>
+    <ul>
+        <li class="list"></li>
+        <li class="list"></li>
+        <li class="list"></li>
+        <li class="list"></li>
+        <li class="list"></li>
+    </ul>
+    값 입력 : <input type="text" id="inputVal"/><br/>
+    삽입할 li : 
+    <select id="numbers">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select> 번째 <br/>
+    <button onclick="insertVal();">값 삽입</button>
+    <script>
+      //  function insertVal(){
+      //      var input = document.getElementById('inputVal'); // input type = text 접근
+      //      var inputValue = input.value; // input type = text에 적힌 값
+      //      var select = document.getElementById('numbers'); // select 접근
+      //      var index = select.value -1; //select에서 선택한 값
+      //      var lists = document.getElementsByClassName('list');
+      //
+      //          var answer = true;
+      //        if(lists[index].innerHTML !=''){ //li에 글이 써져있는 상황
+      //          answer = confirm('현재 값이 존재합니다. 덮어씌우시겠습니까?');
+      //        }
+      //        if(answer){
+      //             lists[index].innerHTML = inputValue;
+      //            input.value ='';
+      //        }
+      // }
+
+       const insertVal=()=>{
+            const input = document.getElementById('inputVal'); // input type = text 접근
+            const inputValue = input.value; // input type = text에 적힌 값
+            const select = document.getElementById('numbers'); // select 접근
+            const index = select.value -1; //select에서 선택한 값
+            const lists = document.getElementsByClassName('list');
+
+            let answer = true;
+            
+            if(lists[index].innerHTML !=''){ //li에 글이 써져있는 상황
+                answer = confirm('현재 값이 존재합니다. 덮어씌우시겠습니까?');
+            }
+            if(answer){
+                lists[index].innerHTML = inputValue;
+                input.value ='';
+            }
+       }
+    </script>
     
 
 
