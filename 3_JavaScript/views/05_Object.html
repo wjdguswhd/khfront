@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>객체</h1>
+    <h2>객체 선언 및 호출</h2>
+    <p>
+        중괄호 {}를 사용하여 객체를 생성하고, 속성에는 모든 자료형이 올 수 있음<br/>
+        객체는 키 값을 사용하여 속성 식별
+    </p>
+    <button onclick="basic();">실행확인</button>
+    <script>
+        const basic = () =>{
+            const product = {
+                pName:'Dry Mango',
+                type:'pickle',
+                ingredient:['mango','sugar'],
+                origin:'Pilippines'
+            };//객체
+            console.log(product);
+            
+            //속성 접근하기
+            //객체명['속성명']
+            console.log(product['pName']);
+            console.log(product['type']);
+            console.log(product['ingredient']);
+            console.log(product['ingredient'][0]);
+            console.log(product['ingredient'][1]);
+            console.log(product['origin']);
+
+            //객체명.속성명
+            console.log(product.pName);
+            console.log(product.type);
+            console.log(product.ingredient);
+            console.log(product.ingredient[0]);
+            console.log(product.ingredient[1]);
+            console.log(product.origin);
+
+            //product = 'test'; //Uncaught TypeError: Assignment to constant variable.
+            product.origin = 'Korea'; // const product 자체는 바꿀수없지만 내부 속성은 바꿀 수 있음.
+    
+        }
+    </script>
+
+    <h3>객체의 키 식별자 테스트</h3>
+    <p>
+        객체의 키는 모든 문자열 사용 가능<br/>
+        단 식별자로 사용할 수 없는 단어로 키로 사용한 경우, 무조건 _____를 사용해야 객체의 요소에 접근 가능
+    </p>
+    <button onclick="keyTest();">실행확인</button>
+    <script>
+        const keyTest=()=>{
+            const objTest ={
+                win$ter:'겨울방학',
+                win_ter:'눈',
+                'win ter':'크리스마스'
+            };
+            console.log(objTest);
+
+            console.log(objTest.win$ter);
+            console.log(objTest.win_ter);
+            //console.log(objTest.'win ter');
+            console.log(objTest['win ter']);
+        }
+
+    </script>
+
+    <h2>객체 속성 추가 및 제거</h2>
+    <p>처음 객체 생성 이후 속성을 추가하거나 제거하는 것을'동적으로 속성을 추가한다/제거한다'라고 함</p>
+    <button onclick="addObjArg();">실행확인</button>
+    <script>
+        const addObjArg=()=>{
+            const student = {}; //빈 객체 선언(const student = new Object();)
+            console.log(student);
+
+            student.name = '강건강';
+            student['hobby'] = "운동";
+            student.strength = '3대500';
+            student.dream = '크로스핏 선수';
+            console.log(student);
+
+            student.toString=function(){
+                let str='';
+                for(const key in this){ // function 안에서의 this는 해당 객체 지칭
+                    if(key != 'toString'){
+                        str += key + ' : ' + this[key]; + '\n';
+                    }
+                }
+                return str;
+            }
+            console.log(student.toString());
+
+            delete(student.hobby);
+            console.log(student);
+        }
+    </script>
+
+    <h2>객체 배열</h2>
+    <button onclick="objArr();">실행확인</button>
+    <script>
+        const objArr=()=>{
+            const student0 = {name:'차청춘', java:90,oracle:56, HTML5:56, CSS3:44, javascript:34};
+            const student1 = {name:'남나눔', java:78,oracle:13, HTML5:73, CSS3:75, javascript:94};
+            const student2 = {name:'문미미', java:74,oracle:64, HTML5:67, CSS3:88, javascript:10};
+            const student3 = {name:'강건강', java:42,oracle:34, HTML5:56, CSS3:77, javascript:13};
+            const student4 = {name:'박보배', java:96,oracle:24, HTML5:99, CSS3:65, javascript:42};
+            const student5 = {name:'정재주', java:45,oracle:12, HTML5:13, CSS3:98, javascript:55};
+            const student6 = {name:'송성실', java:74,oracle:22, HTML5:84, CSS3:79, javascript:28};
+            const student7 = {name:'도대담', java:74,oracle:26, HTML5:66, CSS3:84, javascript:35};
+            const student8 = {name:'윤예의', java:85,oracle:17, HTML5:94, CSS3:92, javascript:14};
+            const student9 = {name:'류라라', java:53,oracle:41, HTML5:46, CSS3:92, javascript:43};
+
+            const students = [];
+            students.push(student0);
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+            students.push(student4);
+            students.push(student5);
+            students.push(student6);
+            students.push(student7);
+            students.push(student8);
+            students.push(student9);
+            console.log(students);
+
+            for(const obj of students){
+                obj.getSum = function(){
+                    let sum = 0;
+                    for(const key in this){
+                        if(key != 'name' && key != 'getSum' && key != 'getAvg' ){
+                            sum += this[key];
+                        }
+                    }
+                    return sum;
+                }
+                obj.getAvg = function(){
+                    return this.getSum()/5;
+                }
+            }
+            for(const i in students){
+                console.log('이름 : ' + students[i].name 
+                + ", 총점 : " + students[i].getSum() 
+                + ", 평균 : " + students[i].getAvg());
+            }
+
+        }
+    </script>
+
+</body>
+</html>
