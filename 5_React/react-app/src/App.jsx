@@ -1,7 +1,15 @@
-import funcComp from './components/01_component/FuncComponent';
+// import FuncComp from './components/01_component/FuncComponent';
+import {Test} from './components/01_component/FuncComponent'
+import ClassComp from './components/01_component/ClassComponent'
 
 function App() {
-    return<funcComp/> //한 줄 밖에 없으므로 소괄호 생략가능
+    return(   
+    <div>
+    {/* <FuncComp/>*/}{/* JSX 주석 */}
+    <ClassComp/>
+    <Test/>
+    </div>
+    )
 }
 
 export default App
