@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>UI 적용하기</title>
+
+<style>
+ 
+    .container{
+        width: 700px;
+        margin: 30px auto;
+    }
+
+    table{
+        width: 100%;
+
+    }
+
+    tr{
+        height: 50px;
+    }
+
+    .label{
+        width: 120px;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .center{
+        text-align: center;
+    }
+    
+    #width,#height,#fontSize{
+        width: 60px;
+    }
+
+    #resultBox{
+        margin: 30px auto;
+        display: none;
+    }
+   
+
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<table>
+    <tr>
+        <td class="label">너비 :</td>
+        <td><input type="number" id="width"> px</td>
+
+        <td class="label">높이 :</td>
+        <td><input type="number" id="height"> px</td>
+    </tr>
+
+    <tr>
+        <td class="label">글자크기 :</td>
+        <td><input type="number" id="fontSize"> px</td>
+
+        <td class="label">굵기 :</td>
+        <td>
+            보통 <input type="radio" name="bold" value="normal">
+            굵게 <input type="radio" name="bold" value="bold">
+        </td>
+    </tr>
+
+    <tr>
+        <td class="label">글자색 :</td>
+        <td><input type="text" id="color"></td>
+
+        <td class="label">배경색 :</td>
+        <td><input type="text" id="bgColor"></td>
+    </tr>
+
+    <tr>
+        <td class="label">가로정렬 :</td>
+        <td colspan="3">
+            왼쪽 <input type="radio" name="hAlign" value="flex-start">
+            가운데 <input type="radio" name="hAlign" value="center">
+            오른쪽 <input type="radio" name="hAlign" value="flex-end">
+        </td>
+    </tr>
+
+    <tr>
+        <td class="label">세로정렬 :</td>
+        <td colspan="3">
+            위 <input type="radio" name="vAlign" value="flex-start">
+            가운데 <input type="radio" name="vAlign" value="center">
+            아래 <input type="radio" name="vAlign" value="flex-end">
+        </td>
+    </tr>
+
+    <tr>
+        <td class="label">출력 문자열 :</td>
+        <td colspan="3">
+            <input type="text" id="text" style="width:100%;">
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="center">
+            <button onclick="applyStyle()">적용하기</button>
+        </td>
+    </tr>
+</table>
+
+<div id="resultBox">
+    <span id="resultText"></span>
+</div>
+
+</div>
+
+<script>
+function applyStyle(){
+    const box = document.getElementById("resultBox");
+    const text = document.getElementById("resultText");
+    const width = document.getElementById("width").value;
+    const height = document.getElementById("height").value;
+    const fontSize = document.getElementById("fontSize").value;
+    const color = document.getElementById("color").value;
+    const bgColor = document.getElementById("bgColor").value;
+    const content = document.getElementById("text").value;
+
+    const boldEl = document.querySelector('input[name="bold"]:checked');
+    const hAlignEl = document.querySelector('input[name="hAlign"]:checked');
+    const vAlignEl = document.querySelector('input[name="vAlign"]:checked');
+
+    
+    if(width && height){
+    box.style.display = "flex";
+    box.style.width = width + "px";
+    box.style.height = height + "px";
+    box.style.border = "3px solid black";
+
+    if(bgColor) box.style.backgroundColor = bgColor;
+
+    // 정렬
+    if(hAlignEl) box.style.justifyContent = hAlignEl.value;
+    if(vAlignEl) box.style.alignItems = vAlignEl.value;
+
+    // 텍스트
+    if(fontSize) text.style.fontSize = fontSize + "px";
+    if(color) text.style.color = color;
+    if(boldEl) text.style.fontWeight = boldEl.value;
+
+    text.innerText = content || "";
+ }
+}
+        
+</script>
+
+</body>
+</html>
