@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>UI 적용하기</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
 
 <style>
  
@@ -10,7 +11,7 @@
         width: 700px;
         margin: 30px auto;
     }
-
+    
     table{
         width: 100%;
     }
@@ -19,13 +20,12 @@
         height: 50px;
     }
 
-    .label{
-        width: 120px;
-        text-align: right;
+    .tag{
+        text-align: center;
         font-weight: bold;
     }
 
-    .center{
+    .apply{
         text-align: center;
     }
     
@@ -33,11 +33,10 @@
         width: 60px;
     }
 
-    #resultBox{
-        margin: 30px auto;
+    #boximg{
+        margin: auto;
         display: none;
     }
-   
 
 </style>
 
@@ -48,107 +47,109 @@
 
 <table>
     <tr>
-        <td class="label">너비 :</td>
+        <td class="tag">너비 :</td>
         <td><input type="number" min="0" id="width"> px</td>
 
-        <td class="label">높이 :</td>
+        <td class="tag">높이 :</td>
         <td><input type="number" min="0" id="height"> px</td>
     </tr>
 
     <tr>
-        <td class="label">글자크기 :</td>
+        <td class="tag">글자크기 :</td>
         <td><input type="number" min="0" id="fontSize"> px</td>
 
-        <td class="label">굵기 :</td>
+        <td class="tag">굵기 :</td>
         <td>
-            보통 <input type="radio" name="bold" value="normal">
-            굵게 <input type="radio" name="bold" value="bold">
+            <label>보통 <input type="radio" name="bold" value="normal"></label>
+            <label>굵게 <input type="radio" name="bold" value="bold"></label>
         </td>
     </tr>
 
     <tr>
-        <td class="label">글자색 :</td>
-        <td><input type="text" id="color"></td>
+        <td class="tag">글자색 :</td>
+        <td><input type="text" id="textColor"></td>
 
-        <td class="label">배경색 :</td>
+        <td class="tag">배경색 :</td>
         <td><input type="text" id="bgColor"></td>
     </tr>
 
     <tr>
-        <td class="label">가로정렬 :</td>
+    <td class="tag">가로정렬 :</td>
         <td colspan="3">
-            왼쪽 <input type="radio" name="hAlign" value="flex-start">
-            가운데 <input type="radio" name="hAlign" value="center">
-            오른쪽 <input type="radio" name="hAlign" value="flex-end">
+            <label>왼쪽 <input type="radio" name="gaAlign" value="flex-start"></label>
+            <label>가운데 <input type="radio" name="gaAlign" value="center"></label>
+            <label>오른쪽 <input type="radio" name="gaAlign" value="flex-end"></label>
         </td>
     </tr>
 
     <tr>
-        <td class="label">세로정렬 :</td>
+    <td class="tag">세로정렬 :</td>
         <td colspan="3">
-            위 <input type="radio" name="vAlign" value="flex-start">
-            가운데 <input type="radio" name="vAlign" value="center">
-            아래 <input type="radio" name="vAlign" value="flex-end">
+            <label>위 <input type="radio" name="seAlign" value="flex-start"></label>
+            <label>가운데 <input type="radio" name="seAlign" value="center"></label>
+            <label>아래 <input type="radio" name="seAlign" value="flex-end"></label>
         </td>
     </tr>
 
     <tr>
-        <td class="label">출력 문자열 :</td>
+        <td class="tag">출력 문자열 :</td>
         <td colspan="3">
             <input type="text" id="text" style="width:100%;">
         </td>
     </tr>
 
     <tr>
-        <td colspan="4" class="center">
+        <td colspan="4" class="apply">
             <button onclick="applyStyle()">적용하기</button>
         </td>
     </tr>
+
 </table>
 
-<div id="resultBox">
-    <span id="resultText"></span>
+<div id="boximg">
+    <span id="boximgText"></span>
 </div>
 
 </div>
 
 <script>
 function applyStyle(){
-    const box = document.getElementById("resultBox");
-    const text = document.getElementById("resultText");
+    
+    const boximg = document.getElementById("boximg");
+    const boximgText = document.getElementById("boximgText");
     const width = document.getElementById("width").value;
     const height = document.getElementById("height").value;
     const fontSize = document.getElementById("fontSize").value;
-    const color = document.getElementById("color").value;
+    const textColor = document.getElementById("textColor").value;
     const bgColor = document.getElementById("bgColor").value;
-    const content = document.getElementById("text").value;
+    const text = document.getElementById("text").value;
 
-    const boldEl = document.querySelector('input[name="bold"]:checked');
-    const hAlignEl = document.querySelector('input[name="hAlign"]:checked');
-    const vAlignEl = document.querySelector('input[name="vAlign"]:checked');
+    const bolds = document.querySelector('input[name="bold"]:checked');
+    const gaAligns = document.querySelector('input[name="gaAlign"]:checked');
+    const seAligns = document.querySelector('input[name="seAlign"]:checked');
 
-    
-    if(width && height){
-    box.style.display = "flex";
-    box.style.width = width + "px";
-    box.style.height = height + "px";
-    box.style.border = "3px solid black";
 
-    if(bgColor) box.style.backgroundColor = bgColor;
+    boximg.style.display = "flex";
+    boximg.style.width = width + "px";
+    boximg.style.height = height + "px";
+    boximg.style.border = "3px solid black";
+    boximg.style.backgroundColor = bgColor;
 
-    // 정렬
-    if(hAlignEl) box.style.justifyContent = hAlignEl.value;
-    if(vAlignEl) box.style.alignItems = vAlignEl.value;
+    boximgText.style.fontSize = fontSize + "px";
+    boximgText.style.color = textColor;
 
-    // 텍스트
-    if(fontSize) text.style.fontSize = fontSize + "px";
-    if(color) text.style.color = color;
-    if(boldEl) text.style.fontWeight = boldEl.value;
+    if(gaAligns) 
+    boximg.style.justifyContent = gaAligns.value;
 
-    text.innerText = content || "";
- }
+    if(seAligns) 
+    boximg.style.alignItems = seAligns.value;
+
+    if(bolds) 
+    boximgText.style.fontWeight = bolds.value;
+
+    boximgText.innerText = text;
+ 
 }
-        
 </script>
 
 </body>
