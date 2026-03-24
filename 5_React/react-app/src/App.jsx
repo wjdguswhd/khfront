@@ -4,6 +4,8 @@ import ClassComp from './components/01_component/ClassComponent'
 import ClassProps from './components/02_props/ClassProps'
 import FuncProps from './components/02_props/FuncProps'
 import Button from './components/02_props/Button'
+import ClassState from './components/03_state/ClassState'
+import ClassOneTwoBtn from './components/03_state/ClassOneNumTwoBtn'
 
 function App() {
     return( 
@@ -28,6 +30,13 @@ function App() {
     <Button color='yellowgreen' text='확인'/>
     <Button color="red" text="삭제"/>
     <Button color="blue" text="수정"/>
+
+    <hr/>
+    
+    <h1>state 연습1</h1>
+    <ClassState/>
+    <ClassOneTwoBtn/>
+
 
     </div>
     )

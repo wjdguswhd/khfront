@@ -15,16 +15,29 @@ import { Component } from "react";
 class ClassState extends Component{
     constructor(props){
         super(props);
-        this.state = {numer1:0, number2:0} // state(number1, number2) 초기화
+        this.state = {number1:0, number2:0} // state(number1, number2) 초기화
         //state : number1과 number2에 대한 상태관리
     }
 
     render(){
+        console.log(this.state);
+        // const {number1,number2} = this.state;
+        const n1 = this.state.number1;
+        const n2 = this.state.number2;
         return(
             <div>
-
+                <h2>{n1}</h2>
+                <button onClick={()=>{
+                    this.setState({number1:n1 + 1});
+                }}>click me!</button>
+                <h2>{n2}</h2>
+                <button onClick={this.number2SubOne}>click me!</button>
             </div>
         );
+    }
+
+    number2SubOne=()=>{
+        this.setState({number2:this.state.number2-1});
     }
 }
 
