@@ -94,7 +94,7 @@
     <tr>
         <td class="tag">출력 문자열 :</td>
         <td colspan="3">
-            <input type="text" id="text" style="width:100%;">
+            <input type="text" id="text" style="width:86%;">
         </td>
     </tr>
 
@@ -129,10 +129,13 @@ function applyStyle(){
     const seAligns = document.querySelector('input[name="seAlign"]:checked');
 
 
+    if(width || height){
     boximg.style.display = "flex";
     boximg.style.width = width + "px";
     boximg.style.height = height + "px";
     boximg.style.border = "3px solid black";
+    }
+
     boximg.style.backgroundColor = bgColor;
 
     boximgText.style.fontSize = fontSize + "px";
