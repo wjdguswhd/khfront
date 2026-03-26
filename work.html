@@ -7,13 +7,9 @@
 
 <style>
  
-    .container{
-        width: 700px;
-        margin: 30px auto;
-    }
-    
-    table{
-        width: 100%;
+    .output{
+        width: 500px;
+        margin: auto;
     }
 
     tr{
@@ -29,7 +25,10 @@
         text-align: center;
     }
     
-    #width,#height,#fontSize{
+    #width,#height{
+        width: 80px;
+    }
+    #fontSize{
         width: 60px;
     }
 
@@ -41,9 +40,10 @@
 </style>
 
 </head>
+
 <body>
 
-<div class="container">
+<div class="output">
 
 <table>
     <tr>
@@ -94,26 +94,26 @@
     <tr>
         <td class="tag">출력 문자열 :</td>
         <td colspan="3">
-            <input type="text" id="text" style="width:86%;">
+            <input type="text" id="text" style="width:100%">
         </td>
     </tr>
 
     <tr>
         <td colspan="4" class="apply">
-            <button onclick="applyStyle()">적용하기</button>
+            <button onclick="applyButton()">적용하기</button>
         </td>
     </tr>
 
 </table>
 
+</div>
+
 <div id="boximg">
     <span id="boximgText"></span>
 </div>
 
-</div>
-
 <script>
-function applyStyle(){
+function applyButton(){
     
     const boximg = document.getElementById("boximg");
     const boximgText = document.getElementById("boximgText");
@@ -128,14 +128,10 @@ function applyStyle(){
     const gaAligns = document.querySelector('input[name="gaAlign"]:checked');
     const seAligns = document.querySelector('input[name="seAlign"]:checked');
 
-
-    if(width || height){
     boximg.style.display = "flex";
     boximg.style.width = width + "px";
     boximg.style.height = height + "px";
     boximg.style.border = "3px solid black";
-    }
-
     boximg.style.backgroundColor = bgColor;
 
     boximgText.style.fontSize = fontSize + "px";
@@ -151,7 +147,6 @@ function applyStyle(){
     boximgText.style.fontWeight = bolds.value;
 
     boximgText.innerText = text;
- 
 }
 </script>
 

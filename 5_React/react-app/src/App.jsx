@@ -6,6 +6,11 @@ import FuncProps from './components/02_props/FuncProps'
 import Button from './components/02_props/Button'
 import ClassState from './components/03_state/ClassState'
 import ClassOneTwoBtn from './components/03_state/ClassOneNumTwoBtn'
+import FuncState from './components/03_state/FuncState'
+import FuncOneNumTwoBtn from './components/03_state/FuncOneNumTwoBtn'
+import FuncNameJob from './components/03_state/FuncNameJob'
+import FuncSendDelValue from './components/03_state/FuncSendDelValue'
+import TodoList from './components/03_state/TodoList'
 
 function App() {
     return( 
@@ -36,6 +41,11 @@ function App() {
     <h1>state 연습1</h1>
     <ClassState/>
     <ClassOneTwoBtn/>
+    <FuncState/>
+    <FuncOneNumTwoBtn/>
+    <FuncNameJob/>
+    <FuncSendDelValue/>
+    <TodoList/>
 
 
     </div>
